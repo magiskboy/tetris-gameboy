@@ -12,12 +12,6 @@ Optionally SDL2_Image: `brew install sdl2_image`
 
 CMake: `brew install cmake`
 
-# Customize
-
-`cp CMakeLists.txt.dist CMakeLists.txt`
-
-Change all `MyProject` occurrences in `CMakeLists.txt` to your project name.
-
 # Build & compile
 
 `cd build`

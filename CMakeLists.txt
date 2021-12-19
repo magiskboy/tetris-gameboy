@@ -1,9 +1,9 @@
 cmake_minimum_required(VERSION 2.6)
-project(MyProject)
+project(tetris)
 
 # Use our modified FindSDL2* modules
-set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${MyProject_SOURCE_DIR}/cmake")
-set(BIN_DIR ${MyProject_SOURCE_DIR}/bin)
+set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${tetris_SOURCE_DIR}/cmake")
+set(BIN_DIR ${tetris_SOURCE_DIR}/bin)
 
 # Bump up warning levels appropriately for clang, gcc & msvc and build in debug mode
 if (${CMAKE_CXX_COMPILER_ID} STREQUAL "GNU" OR ${CMAKE_CXX_COMPILER_ID} STREQUAL "Clang")
@@ -20,8 +20,9 @@ endif()
 
 find_package(SDL2 REQUIRED)
 include_directories(${SDL2_INCLUDE_DIR})
+include_directories(./include)
+file(GLOB SOURCES "./src/*.cpp")
 
-
-add_executable(MyProject src/main.cpp)
-target_link_libraries(MyProject ${SDL2_LIBRARY})
-install(TARGETS MyProject RUNTIME DESTINATION ${BIN_DIR})
+add_executable(tetris ${SOURCES})
+target_link_libraries(tetris ${SDL2_LIBRARY})
+install(TARGETS tetris RUNTIME DESTINATION ${BIN_DIR})
